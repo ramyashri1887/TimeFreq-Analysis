@@ -1,3 +1,79 @@
+28/09/21 Log 
+
+STFT Theory : Time spent (1 and 1/2 hour)
+Issues with DFT ? Need for STFT ?
+
+We know the frequency components present in the signal for the entire lenght , but we don't exactly know when these frequency components occur.
+    STFT: Let me introduce myself.
+
+Audio data is dynamic and we want to know how the frequencies evolve over time.
+We don't want a still image of frequencies , we want a video showing the evolution of frequencies over time.
+
+How do we do this?
+    Consider small chunks and apply fft locally. HeheXD done.DIS SIMPLE DA!!
+   
+How to chunk? Windowing function: A pulse of some width(window size) with height 1.
+
+       Frame size (no of samples to which dft is applied ) vs window size (size of the window function )
+       Similarity: both are measured in number of samples .
+       Difference : They refer to two different things.
+       Frame size sometimes can be larger than the window size, in which case the elements outside the window are zero padded.
+       So, Window size != Frame size possible 
+
+Overlapping frames 
+
+    Hop size (H): How many samples we slide to the right when we move to the nxt frame, or in other words number of samples between two consequtive frames.
+
+Need for overlapping frames ?
+Findout 
+//////////////////////////////////////////////////////
+Mathematics : Derived from DFT equation.
+DFT equation = x(k)= summation(0,n) x(n) * e^ (j *w) 
+STFT equation = S(k,m) = summation(0,n) * x( n + m H ) * e ^ ( j * w ) ; S is a function of both frequency and time (m , frame number), mH represents the first element of the current frame. 
+Doubt: why signal is shifted and not the window, why do we even neeed a window. Equation is confusing 
+///////////////////////////////////////////////////////
+Difference: Summation variable N in DFT spans the entire duration of time, whilst in STFT N equals the frame rate which is in turn the number of samples.
+
+Output size STFT = (#frequency bins, #time)                           vs               OUTPUT SIZE DFT = (#frequency bins)
+2D spectral matrix with complex coefficients wrt time and freq                         Spectral vector with N   fourier coefficients 
+Frequency bins in STFT = framesize/2 +1 (symmetry in DFT)                              Frequency bins in DFT = No of samples 
+Time bins = (signal size - frame size / hop size) + 1                                  Concept of time doesn't exist in DFT
+WHY?
+////////////////////////////////////////////////////////
+Example signal : size 10K, hop size 500; frame size 1K, calculate the output shape ? Output shape : ( f, t).
+f= 501 (framesize/2 +1)
+t= 9K/0.5K+1= 19
+So output shape = (501, 19)
+
+STFT Parameters :
+Frame Size: Usually a power of 2. Reason : fft used to calculate dft. 
+///////////////////////////////////////////////////////////
+512, 1024, 2048 etc.
+
+SOOOOOOOOOPER IMPORTANT TRADEOFF: Time frequency Tradeoff 😱
+Increasing the frequency resolution means increasing the the frame size which in turn means increasing the including bigger chunks so lesser time resolution.
+Increasing the time resoltion , means taking smaller chunks, and hence lesser frequency resolution.
+
+Hop size: Powers of 2
+256,512,1024
+or fractions of frame size (K): 1/2 K, 1/4 K etc.
+
+Windowing function: Rectangle function never used because of discountinuities at the edge.
+Why cant we have discontinuities at the edge?
+////////////////////////////////////////////////////////////
+We use Hann function ; kinda bell curve , but is a shifted cos() function which kinda modulates the values of the signal in the frame.
+
+Visualisaing sound ?
+#SPECTROGRAM! Yay heatmap  
+But the output of STFT are complex coeficients , we take the square of them , making it real (x x* is |x|^2 )
+So spectrogram is the square of the magnitude of the complex coefficients that comes out of the STFT equation, plot into a heat map 
+
+Spectrogram is the most important feature !!!!!!!!!!!!! since it not only has the frequency components but also how it evolves over time this form of representation is called time=frequency representation.
+Spectrograms are amazing. 
+
+Try coding it and understand it (30 min)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 10/09/20121 Log 
 
 Skimmed through the paper 
@@ -20,7 +96,7 @@ What are gravitional waves?
 Resources: 
 
 1)Youtube playlist on audio processing techniques: https://youtu.be/iCwMQJnKk2c
-2)Blog on gravitational waves : https://cplberry.com/
+2)Bl  og on gravitational waves : https://cplberry.com/
 3)https://ai.plainenglish.io/tackling-gravitational-waves-detection-kaggle-competition-part-1-4c43eadbe7d7
 4)https://arxiv.org/pdf/1908.11170.pdf
 
