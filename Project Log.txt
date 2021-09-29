@@ -1,3 +1,34 @@
+________________________________________________________________________________________________________________________________________________________________________________
+
+10/09/20121 Log 
+
+Skimmed through the paper 
+https://arxiv.org/pdf/2009.00043.pdf
+
+What's time frequency analysis?
+Analysing signals with two independant parameters , time and frequency simlutaeneously. Signal a function of time and frequency is prepreprocessed.
+
+Types of time frequency analysis/formulations?
+
+- Short time fourier transform 
+- Wavelet tranform; discrete time is haar , and continous time is morlet.
+**we'll study wavelets extensively 
+-Wigner distribution , bilinear time frequency distribution 
+-Modified wigner distribution 
+-Hilbert-huang transform 
+-
+
+What are gravitional waves?
+Resources: 
+
+1)Youtube playlist on audio processing techniques: https://youtu.be/iCwMQJnKk2c
+2)Bl  og on gravitational waves : https://cplberry.com/
+3)https://ai.plainenglish.io/tackling-gravitational-waves-detection-kaggle-competition-part-1-4c43eadbe7d7
+4)https://arxiv.org/pdf/1908.11170.pdf
+
+Study STFT and learn the implemetation if posible 
+________________________________________________________________________________________________________________________________________________________________________________
+
 28/09/21 Log 
 
 STFT Theory : Time spent (1 and 1/2 hour)
@@ -72,32 +103,12 @@ Spectrogram is the most important feature !!!!!!!!!!!!! since it not only has th
 Spectrograms are amazing. 
 
 Try coding it and understand it (30 min)
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+________________________________________________________________________________________________________________________________________________________________________________
 
-10/09/20121 Log 
+29/09/2021 LOG
+-STFT Implemetation done
+-Clarify STFT doubts
+-Stufy wigner distribtion 
 
-Skimmed through the paper 
-https://arxiv.org/pdf/2009.00043.pdf
+Wigner ville distribution : Part of Cohens class of algorithms 
 
-What's time frequency analysis?
-Analysing signals with two independant parameters , time and frequency simlutaeneously. Signal a function of time and frequency is prepreprocessed.
-
-Types of time frequency analysis/formulations?
-
-- Short time fourier transform 
-- Wavelet tranform; discrete time is haar , and continous time is morlet.
-**we'll study wavelets extensively 
--Wigner distribution , bilinear time frequency distribution 
--Modified wigner distribution 
--Hilbert-huang transform 
--
-
-What are gravitional waves?
-Resources: 
-
-1)Youtube playlist on audio processing techniques: https://youtu.be/iCwMQJnKk2c
-2)Bl  og on gravitational waves : https://cplberry.com/
-3)https://ai.plainenglish.io/tackling-gravitational-waves-detection-kaggle-competition-part-1-4c43eadbe7d7
-4)https://arxiv.org/pdf/1908.11170.pdf
-
-Study STFT and learn the implemetation if posible 
